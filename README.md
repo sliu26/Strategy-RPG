@@ -1,0 +1,1 @@
+Every century a worldwide phenomenon occurs, transforming the people of this world into creatures reminiscent of card suits. A tournament is then held where these transformed beings gain abilities according to their suites and number to fight. Those victorious will be granted the title of "High King"
