@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://bithndug1ibfu"]
 
 [ext_resource type="Script" uid="uid://6sqvrqkicq8t" path="res://player_cursor.gd" id="1_gfjgm"]
-[ext_resource type="Script" uid="uid://d0is1i3m7082c" path="res://variables.gd" id="1_vm4q1"]
+[ext_resource type="Script" uid="uid://6x1hbm1wdoh3" path="res://map.gd" id="1_vm4q1"]
 [ext_resource type="Texture2D" uid="uid://byivt6lo7bk36" path="res://art/player-cursor-awesome-mode.png" id="2_3h1ab"]
 [ext_resource type="Texture2D" uid="uid://cxf5x1j1j7rf7" path="res://tile_set.png" id="3_7if1s"]
 [ext_resource type="Script" uid="uid://c0gng8a4hayjn" path="res://joker_b.gd" id="4_0f2yp"]
@@ -35,9 +35,6 @@ texture = ExtResource("3_7if1s")
 sources/0 = SubResource("TileSetAtlasSource_v6avs")
 
 [node name="Map" type="Node2D" unique_id=127951776]
-
-[node name="Variables" type="Node" parent="." unique_id=2061588931]
-unique_name_in_owner = true
 script = ExtResource("1_vm4q1")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1040322420]
