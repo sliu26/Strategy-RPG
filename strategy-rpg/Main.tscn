@@ -74,7 +74,3 @@ texture = ExtResource("7_j4qnp")
 script = ExtResource("1_03owx")
 grid = SubResource("Resource_trn2v")
 cell = Vector2(4, 2)
-
-[connection signal="unit_held" from="GameBoard" to="GameBoard/Cursor" method="_on_game_board_unit_held"]
-[connection signal="drop_unit" from="GameBoard/Cursor" to="GameBoard" method="_on_cursor_drop_unit"]
-[connection signal="select_pressed" from="GameBoard/Cursor" to="GameBoard" method="_on_cursor_select_pressed"]

@@ -1,8 +1,6 @@
 class_name Cursor
 extends Node2D
-##initializing signals
-signal select_pressed(cell)
-signal drop_unit(cell)
+
 ## emited whenever cell's position is updated
 signal cursor_moved()
 ## inherits grid resource
@@ -12,7 +10,7 @@ signal cursor_moved()
 		cell = value
 		## translates cell vector to global position
 		global_position = grid.cell_position_to_global_position(cell)
-		emit_signal("cursor_moved")
+		cursor_moved.emit()
 		
 
 ## Sets the cursor to be able to move by default. 
@@ -27,15 +25,17 @@ var ui_cooldown := 0.15
 func _ready() -> void:
 	## assigns inital cell value to global position
 	global_position = grid.cell_position_to_global_position(cell)
+	GlobalSignal.unit_held.connect(_on_unit_held) # callable w/o parenthesis so parameters are built in
+	
 
 ## checks for inputs from player and categorizes them
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action("select"):
-		emit_signal("select_pressed", cell)
+		GlobalSignal.select_pressed.emit(cell)
 ## deselect only functions after select is pressed on a unit containing cell
 	elif event.is_action("deselect"):
 		unit_is_selected = false
-		emit_signal("drop_unit", cell)
+		GlobalSignal.drop_unit.emit(cell)
 
 ## directional inputs move cursor by one cell
 	elif event.is_action("move_right") and can_move:
@@ -67,8 +67,10 @@ func _draw() -> void:
 	draw_rect(Rect2(-grid.HALF_OF_CELL_SIZE, grid.CELL_SIZE), Color.ALICE_BLUE, false, 1.0)
 
 ## keeps unit yoked to cursor until deselect is pressed
-func _on_game_board_unit_held(unit: Unit) -> void:
+
+func _on_unit_held(unit: Unit) -> void:
 	unit_is_selected = true
 	while unit_is_selected:
 		unit.global_position = global_position
 		await cursor_moved
+	pass
