@@ -2,11 +2,11 @@ class_name Grid
 extends Resource
 
 ## denotes length and width of individual cell
-const CELL_SIZE := Vector2(16, 16)
+const CELL_SIZE: Vector2 = Vector2(16, 16)
 ## denotes size of grid using amount of cells in each row and collum
-const GRID_SIZE := Vector2(25, 15)
+const GRID_SIZE: Vector2 = Vector2(25, 15)
 ## usefull for finding center of cell
-const HALF_OF_CELL_SIZE := CELL_SIZE/2
+const HALF_OF_CELL_SIZE: Vector2 = CELL_SIZE/2
 
 ## converts global position vector to cell vector
 func global_position_to_cell_position(unit_position: Vector2):

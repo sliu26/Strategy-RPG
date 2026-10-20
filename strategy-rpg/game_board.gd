@@ -6,7 +6,7 @@ extends Node2D
 var selected_unit: Unit
 ## dictionary that holds values for unit node and cell
 ## cells are keys and nodes are values
-var _units := {}
+var _units: Dictionary = {}
 
 func _ready() -> void:
 	create_unit_dictionary()
@@ -17,7 +17,7 @@ func _ready() -> void:
 ## places child nodes with type Unit into dictionary
 func create_unit_dictionary() -> void:
 	for child in get_children():
-		var unit := child as Unit
+		var unit: Unit = child as Unit
 		if unit is not Unit:
 			continue
 		_units[unit.cell] = unit

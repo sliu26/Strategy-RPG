@@ -6,7 +6,7 @@ extends CharacterBody2D
 
 @export var grid: Resource
 
-@export var cell := Vector2.ZERO:
+@export var cell: Vector2 = Vector2.ZERO:
 	set(value):
 		cell = value
 		global_position = grid.cell_position_to_global_position(cell)

@@ -5,28 +5,28 @@ extends Node2D
 signal cursor_moved()
 ## inherits grid resource
 @export var grid: Grid
-@export var cell := Vector2.ZERO:
+@export var cell: Vector2 = Vector2.ZERO:
 	set(value):
 		cell = value
 		## translates cell vector to global position
 		global_position = grid.cell_position_to_global_position(cell)
 		cursor_moved.emit()
-		
+
 
 ## Sets the cursor to be able to move by default. 
-var can_move := true
+var can_move: bool = true
 ## Sets the cursor to be stationary by default. 
-var player_direction := Vector2.ZERO
+var player_direction: Vector2 = Vector2.ZERO
 ## cursor isn't selecting anything by default
-var unit_is_selected := false
+var unit_is_selected: bool = false
 ## the time it takes before cusor is able to move again
-var ui_cooldown := 0.15
+var ui_cooldown: float = 0.15
 
 func _ready() -> void:
 	## assigns inital cell value to global position
 	global_position = grid.cell_position_to_global_position(cell)
 	GlobalSignal.unit_held.connect(_on_unit_held) # callable w/o parenthesis so parameters are built in
-	
+
 
 ## checks for inputs from player and categorizes them
 func _unhandled_input(event: InputEvent) -> void:
