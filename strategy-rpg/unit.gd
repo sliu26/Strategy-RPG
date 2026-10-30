@@ -1,8 +1,10 @@
 class_name Unit
-extends CharacterBody2D
+extends Node2D
 
 
 ###### all below cell position declaration is the same in cursor script######
+
+@export var unit_definition: UnitDefinition
 
 @export var grid: Resource
 
@@ -11,6 +13,6 @@ extends CharacterBody2D
 		cell = value
 		global_position = grid.cell_position_to_global_position(cell)
 
-
 func _ready() -> void:
 	global_position = grid.cell_position_to_global_position(cell)
+	

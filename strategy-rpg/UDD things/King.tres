@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="UnitDefinition" format=3 uid="uid://gtcthwgk2ppk"]
+
+[ext_resource type="Script" uid="uid://csxtoost41jk5" path="res://UDD things/action_definition.gd" id="1_6yww3"]
+[ext_resource type="Script" uid="uid://bujfsea0ipa86" path="res://UDD things/unit_definition.gd" id="1_pjeg2"]
+
+[sub_resource type="Resource" id="Resource_wc3eb"]
+script = ExtResource("1_6yww3")
+end_point = Vector2(1, 1)
+metadata/_custom_type_script = "uid://csxtoost41jk5"
+
+[sub_resource type="Resource" id="Resource_5gy5g"]
+script = ExtResource("1_6yww3")
+end_point = Vector2(1, -1)
+metadata/_custom_type_script = "uid://csxtoost41jk5"
+
+[sub_resource type="Resource" id="Resource_ndwao"]
+script = ExtResource("1_6yww3")
+end_point = Vector2(-1, -1)
+metadata/_custom_type_script = "uid://csxtoost41jk5"
+
+[sub_resource type="Resource" id="Resource_lfhs8"]
+script = ExtResource("1_6yww3")
+end_point = Vector2(-1, 1)
+metadata/_custom_type_script = "uid://csxtoost41jk5"
+
+[sub_resource type="Resource" id="Resource_pjeg2"]
+script = ExtResource("1_6yww3")
+end_point = Vector2(1, 0)
+metadata/_custom_type_script = "uid://csxtoost41jk5"
+
+[sub_resource type="Resource" id="Resource_6yww3"]
+script = ExtResource("1_6yww3")
+end_point = Vector2(-1, 0)
+metadata/_custom_type_script = "uid://csxtoost41jk5"
+
+[sub_resource type="Resource" id="Resource_bstra"]
+script = ExtResource("1_6yww3")
+end_point = Vector2(0, 1)
+metadata/_custom_type_script = "uid://csxtoost41jk5"
+
+[sub_resource type="Resource" id="Resource_ydhq3"]
+script = ExtResource("1_6yww3")
+end_point = Vector2(0, -1)
+metadata/_custom_type_script = "uid://csxtoost41jk5"
+
+[resource]
+script = ExtResource("1_pjeg2")
+move_definitions = Array[ExtResource("1_6yww3")]([SubResource("Resource_pjeg2"), SubResource("Resource_6yww3"), SubResource("Resource_bstra"), SubResource("Resource_ydhq3")])
+ability_definitions = Array[ExtResource("1_6yww3")]([SubResource("Resource_wc3eb"), SubResource("Resource_5gy5g"), SubResource("Resource_ndwao"), SubResource("Resource_lfhs8")])
