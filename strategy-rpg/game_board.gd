@@ -12,7 +12,7 @@ var current_group_index: int = 0
 var current_unit_index: int = 0
 var current_unit: Unit
 var has_moved: bool = false
-var has_attacked: bool = false
+var has_acted: bool = false
 var current_acs: Array
 
 ## Sets the cursor to be able to move by default. 
@@ -23,16 +23,16 @@ var player_direction: Vector2 = Vector2.ZERO
 var unit_held: bool = false
 ## the time it takes before cusor is able to move again
 var ui_cooldown: float = 0.15
-
+var move_cell: Vector2 
 
 func start_battle(): 
 	current_unit = get_active_units()[current_unit_index]
 	has_moved = false
-	has_attacked = false
+	has_acted = false
 	pass
 
 func step_turn():
-	#if has_attacked == false and has_moved == true:
+	#if has_acted == false and has_moved == true:
 				## elaborate on this code to have script display end points as
 				## highlighted board cells
 				#cell_highlights.highlight_attack_acs(unit.unit_definition.ability_definitions, unit)
@@ -41,42 +41,44 @@ func step_turn():
 ## checks for inputs from player and categorizes them
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action("select"):
-		## finds current unit and then calls yoke_cursor_to_unit
-		if has_moved and has_attacked == false and event.is_released():
-			has_attacked = true
-			print("hayah!")
-			has_attacked = false
-			has_moved = false
+		# 
+		if unit_held == false and has_moved == false and event.is_released():
+			for unit in get_active_units():
+				if unit.cell == cursor.cell:
+					current_unit = unit
+					current_acs = current_unit.unit_definition.move_definitions
+					move_cell = current_unit.cell
+					yoke_cursor_to_unit(current_unit)
+					## elaborate on this code to have script display end points as
+					## highlighted board cells
+					cell_highlights.highlight_move_acs(current_acs, current_unit)
+		# move phase
+		elif unit_held and has_moved == false and event.is_released():
+			for ac in current_acs:
+				var relative_ac_endpoint: Vector2 = move_cell + ac.end_point
+				if relative_ac_endpoint == cursor.cell:
+					unit_held = false
+					has_moved = true
+					current_acs = current_unit.unit_definition.ability_definitions
+					cell_highlights.highlight_attack_acs(current_acs, current_unit)
+		# action phase
+		elif has_moved and has_acted == false and event.is_released():
+			for ac in current_acs:
+				var relative_ac_endpoint: Vector2 = current_unit.cell + ac.end_point
+				if relative_ac_endpoint == cursor.cell:
+					has_acted = true
+					print("hayah!")
+					has_acted = false
+					has_moved = false
 
-		if unit_held and has_moved == false and event.is_released():
-			unit_held = false
-			has_moved = true
-			cell_highlights.highlight_attack_acs(current_unit.unit_definition.move_definitions, current_unit)
 
-
-			
-
-			
-			
-			
-		for unit in get_active_units():
-			## code for move phase
-			if unit.cell == cursor.cell and unit_held == false and has_moved == false and event.is_released():
 				
-				current_unit = unit
-				yoke_cursor_to_unit(current_unit)
-				## elaborate on this code to have script display end points as
-				## highlighted board cells
-				cell_highlights.highlight_move_acs(current_unit.unit_definition.move_definitions, current_unit)
-			## code for attack phase
+			#GlobalSignal.select_pressed.emit(cursor.cell)
 			
-		#GlobalSignal.select_pressed.emit(cursor.cell)
-		
-		
-		
-## deselect only functions after select is pressed on a unit containing cursor.cell
-	elif event.is_action("deselect"):
-		pass
+			
+	## deselect only functions after select is pressed on a unit containing cursor.cell
+		elif event.is_action("deselect"):
+			pass
 
 
 ## directional inputs move cursor by one cursor.cell
