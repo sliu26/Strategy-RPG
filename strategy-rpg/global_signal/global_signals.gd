@@ -1,5 +1,5 @@
 extends Node
 
 signal unit_held(unit: Unit)
-signal select_pressed(cell: Vector2)
-signal drop_unit(cell: Vector2)
+signal highlight_move_acs(acs: Array[ActionDefinition], unit: Unit)
+signal highlight_attack_acs(acs: Array[ActionDefinition], unit: Unit)

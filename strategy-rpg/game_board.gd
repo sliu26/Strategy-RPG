@@ -4,7 +4,6 @@ extends Node2D
 ## inherits grid resource
 @export var grid: Grid
 @onready var cursor: Cursor = %Cursor 
-@onready var cell_highlights: CellHighlights = %CellHighlights
 ## sets initial cursor position
 
 var current_group: Node
@@ -41,7 +40,7 @@ func step_turn():
 ## checks for inputs from player and categorizes them
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action("select"):
-		# 
+		# selection phase
 		if unit_held == false and has_moved == false and event.is_released():
 			for unit in get_active_units():
 				if unit.cell == cursor.cell:
@@ -51,7 +50,9 @@ func _unhandled_input(event: InputEvent) -> void:
 					yoke_cursor_to_unit(current_unit)
 					## elaborate on this code to have script display end points as
 					## highlighted board cells
-					cell_highlights.highlight_move_acs(current_acs, current_unit)
+					GlobalSignal.highlight_move_acs.emit(current_acs, current_unit)
+					return
+			print("error")
 		# move phase
 		elif unit_held and has_moved == false and event.is_released():
 			for ac in current_acs:
@@ -60,22 +61,29 @@ func _unhandled_input(event: InputEvent) -> void:
 					unit_held = false
 					has_moved = true
 					current_acs = current_unit.unit_definition.ability_definitions
-					cell_highlights.highlight_attack_acs(current_acs, current_unit)
+					GlobalSignal.highlight_attack_acs.emit(current_acs, current_unit)
+					return
+			print("error")
 		# action phase
 		elif has_moved and has_acted == false and event.is_released():
 			for ac in current_acs:
 				var relative_ac_endpoint: Vector2 = current_unit.cell + ac.end_point
 				if relative_ac_endpoint == cursor.cell:
 					has_acted = true
-					print("hayah!")
 					has_acted = false
 					has_moved = false
+					GlobalSignal.highlight_attack_acs.emit([], current_unit)
+					
+					for enemy_unit in get_active_units():
+						if enemy_unit.cell == cursor.cell:
+							enemy_unit.unit_hit()
+							return
+					print("miss!")
+					return
+			print("error")
 
 
-				
-			#GlobalSignal.select_pressed.emit(cursor.cell)
-			
-			
+
 	## deselect only functions after select is pressed on a unit containing cursor.cell
 		elif event.is_action("deselect"):
 			pass
@@ -112,7 +120,8 @@ func get_active_units() -> Array[Unit]:
 	
 	for group in self.get_children():
 		for unit in group.get_children():
-			active_units.append(unit)
+			if unit.is_active == true:
+				active_units.append(unit)
 	return active_units
 
 
