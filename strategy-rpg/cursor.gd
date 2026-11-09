@@ -3,7 +3,9 @@ extends Node2D
 
 
 ###### all below cell position declaration is the same in cursor script######
-
+#@export var cursor_animation: CursorAnimation
+@onready var cursor_animation = $CursorAnimation
+@onready var game_board = %GameBoard as GameBoard
 signal cursor_moved
 
 @export var grid: Resource
@@ -13,9 +15,20 @@ signal cursor_moved
 		cell = value
 		global_position = grid.cell_position_to_global_position(cell)
 		cursor_moved.emit()
+		set_cursor_flash()
+
 
 func _ready() -> void:
 	global_position = grid.cell_position_to_global_position(cell)
-	
-func _draw() -> void:
-	draw_rect(Rect2(-grid.HALF_OF_CELL_SIZE, grid.CELL_SIZE), Color.ALICE_BLUE, false, 1.0)
+
+func set_cursor_flash() -> void:
+	#for unit in game_board.get_active_units():
+		#if unit.cell == cell:
+			#cursor_animation.play("Flash")
+			#return
+	for ac in game_board.current_acs:
+		if ac.cell == cell:
+			cursor_animation.play("Flash")
+			return
+
+	cursor_animation.play("Idle")

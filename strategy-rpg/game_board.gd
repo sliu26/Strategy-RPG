@@ -45,34 +45,48 @@ func _unhandled_input(event: InputEvent) -> void:
 			for unit in get_active_units():
 				if unit.cell == cursor.cell:
 					current_unit = unit
-					current_acs = current_unit.unit_definition.move_definitions
-					move_cell = current_unit.cell
+					current_acs = current_unit.unit_definition.move_definitions.map(
+						func (def):
+							## you need to declare this as action instance or else will return
+							## 
+							return def.to_action_instance(current_unit) as ActionInstance
+							)
+					
 					yoke_cursor_to_unit(current_unit)
 					## elaborate on this code to have script display end points as
 					## highlighted board cells
-					GlobalSignal.highlight_move_acs.emit(current_acs, current_unit)
+					GlobalSignal.highlight_move_acs.emit(current_acs)
 					return
 			print("error")
 		# move phase
 		elif unit_held and has_moved == false and event.is_released():
+
 			for ac in current_acs:
-				var relative_ac_endpoint: Vector2 = move_cell + ac.end_point
-				if relative_ac_endpoint == cursor.cell:
+				if ac.cell == cursor.cell:
 					unit_held = false
 					has_moved = true
-					current_acs = current_unit.unit_definition.ability_definitions
-					GlobalSignal.highlight_attack_acs.emit(current_acs, current_unit)
+					current_acs = current_unit.unit_definition.ability_definitions.map(
+						func (def):
+							## you need to declare this as action instance or else will return
+							## 
+							return def.to_action_instance(current_unit) as ActionInstance
+							)
+					GlobalSignal.highlight_attack_acs.emit(current_acs)
+					## stops cursor from flashing after valid selection
+					cursor.cell = cursor.cell
 					return
 			print("error")
 		# action phase
-		elif has_moved and has_acted == false and event.is_released():
+		elif has_moved == true and has_acted == false and event.is_released():
 			for ac in current_acs:
-				var relative_ac_endpoint: Vector2 = current_unit.cell + ac.end_point
-				if relative_ac_endpoint == cursor.cell:
+				if ac.cell == cursor.cell:
+					current_acs = []
+					## stops cursor from flashing after valid selection
+					cursor.cell = cursor.cell
 					has_acted = true
 					has_acted = false
 					has_moved = false
-					GlobalSignal.highlight_attack_acs.emit([], current_unit)
+					GlobalSignal.highlight_attack_acs.emit([])
 					
 					for enemy_unit in get_active_units():
 						if enemy_unit.cell == cursor.cell:
@@ -115,7 +129,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		can_move = true
 
 func get_active_units() -> Array[Unit]:
-	
 	var active_units: Array[Unit]
 	
 	for group in self.get_children():

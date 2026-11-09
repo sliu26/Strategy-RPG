@@ -1,6 +1,5 @@
 [gd_scene format=4 uid="uid://bithndug1ibfu"]
 
-[ext_resource type="Script" uid="uid://uahmu3cikf21" path="res://cursor.gd" id="1_03owx"]
 [ext_resource type="Script" uid="uid://b17w8a45frcki" path="res://main.gd" id="1_trn2v"]
 [ext_resource type="Script" uid="uid://dx2a4jr3avhun" path="res://cell_highlights.gd" id="2_20pc6"]
 [ext_resource type="Script" uid="uid://7e3gwirr77pi" path="res://game_board.gd" id="2_wkp8b"]
@@ -8,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cxf5x1j1j7rf7" path="res://tile_set.png" id="4_5vvyt"]
 [ext_resource type="Resource" uid="uid://dr4eohfnfygmp" path="res://Grid.tres" id="4_trn2v"]
 [ext_resource type="Resource" uid="uid://gtcthwgk2ppk" path="res://UDD things/King.tres" id="7_03owx"]
+[ext_resource type="PackedScene" uid="uid://duab5o7de0fi8" path="res://cursor.tscn" id="9_03owx"]
 [ext_resource type="PackedScene" uid="uid://cq0fhgukr8puh" path="res://unit.tscn" id="10_20pc6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v6avs"]
@@ -39,11 +39,8 @@ sources/0 = SubResource("TileSetAtlasSource_v6avs")
 script = ExtResource("3_03owx")
 metadata/_custom_type_script = "uid://cuakc0jo3cvlg"
 
-[sub_resource type="Resource" id="Resource_trn2v"]
-script = ExtResource("3_03owx")
-metadata/_custom_type_script = "uid://cuakc0jo3cvlg"
-
 [node name="Level" type="Node2D" unique_id=127951776]
+texture_filter = 1
 script = ExtResource("1_trn2v")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1040322420]
@@ -51,6 +48,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAIAAAAAAAIAAAAAAAIAAAAAAAQAAAAAAAI
 tile_set = SubResource("TileSet_7ksya")
 
 [node name="GameBoard" type="Node2D" parent="." unique_id=910179167]
+unique_name_in_owner = true
 script = ExtResource("2_wkp8b")
 grid = SubResource("Resource_7ksya")
 
@@ -71,11 +69,9 @@ unit_definition = ExtResource("7_03owx")
 cell = Vector2(3, 2)
 
 [node name="CellHighlights" type="Node2D" parent="." unique_id=1149165886]
-unique_name_in_owner = true
 script = ExtResource("2_20pc6")
 grid = ExtResource("4_trn2v")
 
-[node name="Cursor" type="Node2D" parent="." unique_id=1347797134]
+[node name="Cursor" parent="." unique_id=1169615846 instance=ExtResource("9_03owx")]
 unique_name_in_owner = true
-script = ExtResource("1_03owx")
-grid = SubResource("Resource_trn2v")
+cell = null

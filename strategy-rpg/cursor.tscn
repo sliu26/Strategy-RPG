@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://duab5o7de0fi8"]
+
+[ext_resource type="Script" uid="uid://uahmu3cikf21" path="res://cursor.gd" id="1_5l68f"]
+[ext_resource type="Script" uid="uid://cuakc0jo3cvlg" path="res://grid.gd" id="2_e4vdg"]
+[ext_resource type="Texture2D" uid="uid://ct2yibwvg0g1j" path="res://art/cursor_animation/cursor_frame_1.png" id="3_qf7gk"]
+[ext_resource type="Texture2D" uid="uid://7j5rumhwhcfs" path="res://art/cursor_animation/cursor_frame_2.png" id="4_76ls5"]
+
+[sub_resource type="Resource" id="Resource_davkp"]
+script = ExtResource("2_e4vdg")
+metadata/_custom_type_script = "uid://cuakc0jo3cvlg"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_03owx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_qf7gk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_76ls5")
+}],
+"loop": 1,
+"name": &"Flash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_qf7gk")
+}],
+"loop": 0,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="Cursor" type="Node2D" unique_id=1169615846]
+script = ExtResource("1_5l68f")
+grid = SubResource("Resource_davkp")
+
+[node name="CursorAnimation" type="AnimatedSprite2D" parent="." unique_id=1025263890]
+sprite_frames = SubResource("SpriteFrames_03owx")
+animation = &"Idle"

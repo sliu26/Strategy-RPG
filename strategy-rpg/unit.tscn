@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://syviihxnuwe3" path="res://unit.gd" id="1_ctwoc"]
 [ext_resource type="Resource" uid="uid://dr4eohfnfygmp" path="res://Grid.tres" id="2_5wnup"]
-[ext_resource type="Texture2D" uid="uid://dpeoouk2psosu" path="res://art/selectable-object.png" id="2_davkp"]
+[ext_resource type="Texture2D" uid="uid://caaoyclo5b7y7" path="res://art/selectable-object.png" id="2_davkp"]
 
 [node name="Unit" type="Node2D" unique_id=1734912573]
 script = ExtResource("1_ctwoc")

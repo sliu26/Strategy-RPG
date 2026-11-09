@@ -1,6 +1,7 @@
 class_name Grid
 extends Resource
 
+
 ## denotes length and width of individual cell
 const CELL_SIZE: Vector2 = Vector2(16, 16)
 ## denotes size of grid using amount of cells in each row and collum

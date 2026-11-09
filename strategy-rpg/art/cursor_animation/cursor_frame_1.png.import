@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byivt6lo7bk36"
-path="res://.godot/imported/player-cursor-awesome-mode.png-a15756eb0aa509c72970e4036ce774dc.ctex"
+uid="uid://ct2yibwvg0g1j"
+path="res://.godot/imported/cursor_frame_1.png-dddd4a7750d74b74084e1b9d4dad55ec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/player-cursor-awesome-mode.png"
-dest_files=["res://.godot/imported/player-cursor-awesome-mode.png-a15756eb0aa509c72970e4036ce774dc.ctex"]
+source_file="res://art/cursor_animation/cursor_frame_1.png"
+dest_files=["res://.godot/imported/cursor_frame_1.png-dddd4a7750d74b74084e1b9d4dad55ec.ctex"]
 
 [params]
 
