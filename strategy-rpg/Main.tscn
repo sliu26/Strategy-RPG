@@ -55,17 +55,17 @@ grid = SubResource("Resource_7ksya")
 [node name="PlayerUnits" type="Node2D" parent="GameBoard" unique_id=443271481]
 
 [node name="Unit1" parent="GameBoard/PlayerUnits" unique_id=1734912573 instance=ExtResource("10_20pc6")]
-unit_definition = ExtResource("7_03owx")
+unit_def = ExtResource("7_03owx")
 cell = Vector2(10, 5)
 
 [node name="Unit2" parent="GameBoard/PlayerUnits" unique_id=510037454 instance=ExtResource("10_20pc6")]
-unit_definition = ExtResource("7_03owx")
+unit_def = ExtResource("7_03owx")
 cell = Vector2(2, 4)
 
 [node name="EnemyUnits" type="Node2D" parent="GameBoard" unique_id=1755308782]
 
 [node name="Unit3" parent="GameBoard/EnemyUnits" unique_id=698016793 instance=ExtResource("10_20pc6")]
-unit_definition = ExtResource("7_03owx")
+unit_def = ExtResource("7_03owx")
 cell = Vector2(3, 2)
 
 [node name="CellHighlights" type="Node2D" parent="." unique_id=1149165886]
@@ -74,4 +74,3 @@ grid = ExtResource("4_trn2v")
 
 [node name="Cursor" parent="." unique_id=1169615846 instance=ExtResource("9_03owx")]
 unique_name_in_owner = true
-cell = null

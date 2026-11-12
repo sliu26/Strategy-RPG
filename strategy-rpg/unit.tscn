@@ -2,11 +2,30 @@
 
 [ext_resource type="Script" uid="uid://syviihxnuwe3" path="res://unit.gd" id="1_ctwoc"]
 [ext_resource type="Resource" uid="uid://dr4eohfnfygmp" path="res://Grid.tres" id="2_5wnup"]
-[ext_resource type="Texture2D" uid="uid://caaoyclo5b7y7" path="res://art/selectable-object.png" id="2_davkp"]
+[ext_resource type="Texture2D" uid="uid://d0s5uxt8er5lq" path="res://art/unit_sprite.png" id="3_1sk4h"]
+[ext_resource type="Script" uid="uid://nseg1rnrnsfx" path="res://unit_animation.gd" id="4_5wnup"]
+[ext_resource type="Script" uid="uid://cuakc0jo3cvlg" path="res://grid.gd" id="5_1sk4h"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7ksya"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_1sk4h")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_1sk4h"]
+script = ExtResource("5_1sk4h")
+metadata/_custom_type_script = "uid://cuakc0jo3cvlg"
 
 [node name="Unit" type="Node2D" unique_id=1734912573]
 script = ExtResource("1_ctwoc")
 grid = ExtResource("2_5wnup")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1361423577]
-texture = ExtResource("2_davkp")
+[node name="UnitAnimation" type="AnimatedSprite2D" parent="." unique_id=675832384]
+sprite_frames = SubResource("SpriteFrames_7ksya")
+script = ExtResource("4_5wnup")
+grid = SubResource("Resource_1sk4h")

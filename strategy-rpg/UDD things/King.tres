@@ -3,67 +3,87 @@
 [ext_resource type="Script" uid="uid://csxtoost41jk5" path="res://UDD things/action_definition.gd" id="1_6yww3"]
 [ext_resource type="Script" uid="uid://bujfsea0ipa86" path="res://UDD things/unit_definition.gd" id="1_pjeg2"]
 
-[sub_resource type="Resource" id="Resource_wc3eb"]
+[sub_resource type="Resource" id="Resource_6yww3"]
 script = ExtResource("1_6yww3")
 end_point = Vector2(1, 1)
 metadata/_custom_type_script = "uid://csxtoost41jk5"
 
-[sub_resource type="Resource" id="Resource_5gy5g"]
+[sub_resource type="Resource" id="Resource_ydhq3"]
 script = ExtResource("1_6yww3")
 end_point = Vector2(1, -1)
 metadata/_custom_type_script = "uid://csxtoost41jk5"
 
-[sub_resource type="Resource" id="Resource_ndwao"]
-script = ExtResource("1_6yww3")
-end_point = Vector2(-1, -1)
-metadata/_custom_type_script = "uid://csxtoost41jk5"
-
-[sub_resource type="Resource" id="Resource_lfhs8"]
+[sub_resource type="Resource" id="Resource_vsivk"]
 script = ExtResource("1_6yww3")
 end_point = Vector2(-1, 1)
 metadata/_custom_type_script = "uid://csxtoost41jk5"
 
-[sub_resource type="Resource" id="Resource_pjeg2"]
+[sub_resource type="Resource" id="Resource_hu0wa"]
+script = ExtResource("1_6yww3")
+end_point = Vector2(-1, -1)
+metadata/_custom_type_script = "uid://csxtoost41jk5"
+
+[sub_resource type="Resource" id="Resource_wc3eb"]
 script = ExtResource("1_6yww3")
 end_point = Vector2(1, 0)
 metadata/_custom_type_script = "uid://csxtoost41jk5"
 
-[sub_resource type="Resource" id="Resource_6yww3"]
+[sub_resource type="Resource" id="Resource_5gy5g"]
+script = ExtResource("1_6yww3")
+end_point = Vector2(0, 1)
+metadata/_custom_type_script = "uid://csxtoost41jk5"
+
+[sub_resource type="Resource" id="Resource_ndwao"]
 script = ExtResource("1_6yww3")
 end_point = Vector2(-1, 0)
 metadata/_custom_type_script = "uid://csxtoost41jk5"
 
 [sub_resource type="Resource" id="Resource_bstra"]
 script = ExtResource("1_6yww3")
-end_point = Vector2(0, 1)
-metadata/_custom_type_script = "uid://csxtoost41jk5"
-
-[sub_resource type="Resource" id="Resource_ydhq3"]
-script = ExtResource("1_6yww3")
 end_point = Vector2(0, -1)
 metadata/_custom_type_script = "uid://csxtoost41jk5"
 
-[sub_resource type="Resource" id="Resource_03owx"]
+[sub_resource type="Resource" id="Resource_lfhs8"]
 script = ExtResource("1_6yww3")
 end_point = Vector2(2, 0)
 metadata/_custom_type_script = "uid://csxtoost41jk5"
 
-[sub_resource type="Resource" id="Resource_wkp8b"]
-script = ExtResource("1_6yww3")
-end_point = Vector2(-2, 0)
-metadata/_custom_type_script = "uid://csxtoost41jk5"
-
-[sub_resource type="Resource" id="Resource_20pc6"]
+[sub_resource type="Resource" id="Resource_xo2ld"]
 script = ExtResource("1_6yww3")
 end_point = Vector2(0, 2)
 metadata/_custom_type_script = "uid://csxtoost41jk5"
 
-[sub_resource type="Resource" id="Resource_5vvyt"]
+[sub_resource type="Resource" id="Resource_hpofb"]
+script = ExtResource("1_6yww3")
+end_point = Vector2(-2, 0)
+metadata/_custom_type_script = "uid://csxtoost41jk5"
+
+[sub_resource type="Resource" id="Resource_t36vl"]
 script = ExtResource("1_6yww3")
 end_point = Vector2(0, -2)
 metadata/_custom_type_script = "uid://csxtoost41jk5"
 
+[sub_resource type="Resource" id="Resource_ujc2p"]
+script = ExtResource("1_6yww3")
+end_point = Vector2(1, 1)
+metadata/_custom_type_script = "uid://csxtoost41jk5"
+
+[sub_resource type="Resource" id="Resource_03owx"]
+script = ExtResource("1_6yww3")
+end_point = Vector2(1, -1)
+metadata/_custom_type_script = "uid://csxtoost41jk5"
+
+[sub_resource type="Resource" id="Resource_wkp8b"]
+script = ExtResource("1_6yww3")
+end_point = Vector2(-1, 1)
+metadata/_custom_type_script = "uid://csxtoost41jk5"
+
+[sub_resource type="Resource" id="Resource_20pc6"]
+script = ExtResource("1_6yww3")
+end_point = Vector2(-1, -1)
+metadata/_custom_type_script = "uid://csxtoost41jk5"
+
 [resource]
 script = ExtResource("1_pjeg2")
-move_definitions = Array[ExtResource("1_6yww3")]([SubResource("Resource_pjeg2"), SubResource("Resource_6yww3"), SubResource("Resource_bstra"), SubResource("Resource_ydhq3"), SubResource("Resource_03owx"), SubResource("Resource_wkp8b"), SubResource("Resource_20pc6"), SubResource("Resource_5vvyt")])
-ability_definitions = Array[ExtResource("1_6yww3")]([SubResource("Resource_wc3eb"), SubResource("Resource_5gy5g"), SubResource("Resource_ndwao"), SubResource("Resource_lfhs8")])
+move_def = Array[ExtResource("1_6yww3")]([SubResource("Resource_wc3eb"), SubResource("Resource_5gy5g"), SubResource("Resource_ndwao"), SubResource("Resource_bstra"), SubResource("Resource_lfhs8"), SubResource("Resource_xo2ld"), SubResource("Resource_hpofb"), SubResource("Resource_t36vl"), SubResource("Resource_ujc2p"), SubResource("Resource_03owx"), SubResource("Resource_wkp8b"), SubResource("Resource_20pc6")])
+ability_def = Array[ExtResource("1_6yww3")]([SubResource("Resource_6yww3"), SubResource("Resource_ydhq3"), SubResource("Resource_vsivk"), SubResource("Resource_hu0wa")])

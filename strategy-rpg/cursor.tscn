@@ -38,3 +38,15 @@ grid = SubResource("Resource_davkp")
 [node name="CursorAnimation" type="AnimatedSprite2D" parent="." unique_id=1025263890]
 sprite_frames = SubResource("SpriteFrames_03owx")
 animation = &"Idle"
+
+[node name="Up" type="RayCast2D" parent="." unique_id=2084298660]
+collision_mask = 0
+
+[node name="Down" type="RayCast2D" parent="." unique_id=382290717]
+collision_mask = 0
+
+[node name="Left" type="RayCast2D" parent="." unique_id=1463564862]
+collision_mask = 0
+
+[node name="Right" type="RayCast2D" parent="." unique_id=412208502]
+collision_mask = 0
